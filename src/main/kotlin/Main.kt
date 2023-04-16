@@ -7,6 +7,18 @@ fun main() {
 
     val functions = getFunctions(lines)
     println("Found ${functions.count()} functions!")
+    var outText = ""
+    functions.forEach {function ->
+        outText += convertFunctionToSnippets(function)
+    }
+
+    val charset = Charsets.UTF_8
+    val outputFile = File("E:/Coding/BlockWars/SkriptFunctionsParser/out.txt")
+    if(outputFile.exists()) {
+        outputFile.delete()
+    }
+    outputFile.createNewFile()
+    outputFile.writeBytes(outText.toByteArray(charset))
     functions.forEach {
         println(convertFunctionToSnippets(it))
     }

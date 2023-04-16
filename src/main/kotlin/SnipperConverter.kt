@@ -26,7 +26,7 @@ fun getBodyWithInserts(body: String): String {
     var out = "${splitBracket[0]}("
     splitCommas.forEachIndexed() {index, arg ->
         if(arg.contains("=")) return@forEachIndexed
-        out += "\${${index+1}:${arg.split(": ")[1].replace(")", "")}}"
+        out += "\${${index+1}:${arg.split(": ")[0].replace(")", "").replace(":", "")}}"
         if(splitCommasCount != (index + 1)) {
             out += ", "
         }
